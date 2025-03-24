@@ -15,9 +15,9 @@ const allPages = [
   <div class="container-custom flex items-center justify-between">
     <a href="/" class="flex items-center" aria-label="Go to homepage">
       <img
-        src="/logo-1.jpg"
+        :src="darkMode ? '/logo-blanco.png' : '/logo-azul.png'"
         alt="Logo implamax"
-        class="h-14 w-auto fill-current text-primary-500 dark:text-primary-400"
+        class="h-16 w-auto fill-current text-primary-500 dark:text-primary-400"
       />
     </a>
 
@@ -49,53 +49,6 @@ const allPages = [
       >
 
       <!-- All Pages Dropdown -->
-      <div x-data="{ open: false }" class="relative">
-        <button
-          @click="open = !open"
-          @click.away="open = false"
-          class="flex items-center text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors"
-        >
-          All Pages
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 ml-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-
-        <div
-          x-show="open"
-          x-transition:enter="transition ease-out duration-200"
-          x-transition:enter-start="opacity-0 scale-95"
-          x-transition:enter-end="opacity-100 scale-100"
-          x-transition:leave="transition ease-in duration-150"
-          x-transition:leave-start="opacity-100 scale-100"
-          x-transition:leave-end="opacity-0 scale-95"
-          class="absolute left-0 mt-2 w-56 bg-white dark:bg-secondary-900 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50 max-h-96 overflow-y-auto"
-          x-cloak
-        >
-          <div class="py-2 grid grid-cols-1 gap-1">
-            {
-              allPages.map((page) => (
-                <a
-                  href={page.url}
-                  class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
-                >
-                  {page.text}
-                </a>
-              ))
-            }
-          </div>
-        </div>
-      </div>
     </nav>
 
     <div class="flex items-center space-x-4">
@@ -190,61 +143,23 @@ const allPages = [
           <a
             href="/features"
             class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
-            >Features</a
+            >Nosotros</a
           >
           <a
             href="/pricing"
             class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
-            >Pricing</a
+            >Casos de éxtio</a
           >
           <a
             href="/blog"
             class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
-            >Blog</a
+            >Planes</a
           >
           <a
             href="/contact"
             class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
-            >Contact</a
+            >Convenios</a
           >
-
-          <!-- Mobile All Pages Dropdown -->
-          <button
-            @click="showAllPages = !showAllPages"
-            class="w-full text-left px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800 font-semibold border-t border-gray-200 dark:border-gray-700 mt-1 pt-1 flex items-center justify-between"
-          >
-            All Pages
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              :class="{ 'transform rotate-180': showAllPages }"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
-
-          <div
-            x-show="showAllPages"
-            class="py-1 bg-gray-50 dark:bg-secondary-800"
-          >
-            {
-              allPages.map((page) => (
-                <a
-                  href={page.url}
-                  class="block px-6 py-1 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-700"
-                >
-                  {page.text}
-                </a>
-              ))
-            }
-          </div>
         </div>
       </div>
     </div>
