@@ -1,14 +1,3 @@
----
-const allPages = [
-  { text: "Inicio", url: "/" },
-  { text: "Nosotros", url: "/features" },
-  { text: "Tratamientos", url: "/case-study" },
-  { text: "Casos de éxito", url: "/reviews" },
-  { text: "Planes", url: "/changelog" },
-  { text: "Convenios", url: "/integrations" },
-];
----
-
 <header
   class="fixed w-full bg-white/90 dark:bg-secondary-950/90 backdrop-blur-sm z-50 py-4 transition-colors duration-300"
 >
@@ -38,12 +27,12 @@ const allPages = [
         >Planes</a
       >
       <a
-        href="/blog"
+        href="/case-study"
         class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors"
         >Casos de éxito</a
       >
       <a
-        href="/features"
+        href="/company"
         class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors"
         >Nosotros</a
       >
@@ -89,9 +78,13 @@ const allPages = [
         </svg>
       </button>
 
-      <a href="#signup" class="hidden sm:inline-flex btn-primary"
-        >Agendar hora</a
+      <a
+        href="https://wa.me/56921709433?text=Hola%2C%20me%20gustaría%20%20agendar%20una%20hora"
+        target="_blank"
+        class="hidden sm:inline-flex btn-primary"
       >
+        Agendar hora
+      </a>
 
       <!-- Mobile Menu Button and Dropdown -->
       <div x-data="{ open: false, showAllPages: false }">
@@ -142,9 +135,14 @@ const allPages = [
           x-cloak
         >
           <a
-            href="/features"
+            href="/"
             class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
-            >Nosotros</a
+            >Inicio</a
+          >
+          <a
+            href="/contact"
+            class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
+            >Contáctanos</a
           >
           <a
             href="/pricing"
@@ -152,14 +150,14 @@ const allPages = [
             >Planes</a
           >
           <a
-            href="/blog"
+            href="/case-study"
             class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
             >Casos de éxito</a
           >
           <a
-            href="/contact"
+            href="/features"
             class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
-            >Contáctanos</a
+            >Nosotros</a
           >
         </div>
       </div>
