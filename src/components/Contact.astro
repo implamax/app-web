@@ -165,120 +165,95 @@
             Envíanos un Mensaje
           </h3>
 
-          <form
-            x-data="{ name: '', email: '', message: '', submitted: false, errors: {} }"
-          >
-            <div class="mb-4">
+          <form id="contact-form" class="space-y-4">
+            <div>
               <label
                 for="name"
-                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                >Nombre</label
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
               >
+                Nombre
+              </label>
               <input
                 type="text"
                 id="name"
-                x-model="name"
-                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400"
-                placeholder="Nombre completo"
+                name="name"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-gray-300"
               />
-              <p
-                class="text-red-500 text-sm mt-1"
-                x-show="errors.name"
-                x-text="errors.name"
-              >
-              </p>
             </div>
-
-            <div class="mb-4">
+            <div>
               <label
-                for="contact-email"
-                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                >Email</label
+                for="email"
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
               >
+                Correo Electrónico
+              </label>
               <input
                 type="email"
-                id="contact-email"
-                x-model="email"
-                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400"
-                placeholder="Correo electrónico"
+                id="email"
+                name="email"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-gray-300"
               />
-              <p
-                class="text-red-500 text-sm mt-1"
-                x-show="errors.email"
-                x-text="errors.email"
-              >
-              </p>
             </div>
-
-            <div class="mb-6">
+            <div>
               <label
                 for="message"
-                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                >Consulta</label
+                class="block text-sm font-medium text-gray-700 dark:text-gray-300"
               >
+                Mensaje
+              </label>
               <textarea
                 id="message"
-                x-model="message"
-                rows="5"
-                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400"
-                placeholder="Mensaje"></textarea>
-              <p
-                class="text-red-500 text-sm mt-1"
-                x-show="errors.message"
-                x-text="errors.message"
-              >
-              </p>
+                name="message"
+                rows="4"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-gray-300"
+              ></textarea>
             </div>
-
-            <div x-show="!submitted">
-              <button
-                type="submit"
-                class="w-full btn-primary"
-                x-on:click.prevent="
-                  errors = {};
-                  if (!name) errors.name = 'Please enter your name';
-                  if (!email) errors.email = 'Please enter your email';
-                  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Please enter a valid email';
-                  if (!message) errors.message = 'Please enter your message';
-                  
-                  if (Object.keys(errors).length === 0) {
-                    submitted = true;
-                  }
-                "
-              >
-                Enviar Mensaje
-              </button>
-            </div>
-
-            <div
-              class="text-center p-6 bg-primary-50 dark:bg-primary-900/30 rounded-lg"
-              x-show="submitted"
-              x-cloak
+            <button
+              type="submit"
+              class="w-full bg-primary-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
             >
-              <svg
-                class="w-12 h-12 text-primary-500 mx-auto mb-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              <h3
-                class="text-xl font-semibold text-gray-900 dark:text-white mb-2"
-              >
-                ¡Mensaje enviado!
-              </h3>
-              <p class="text-gray-600 dark:text-gray-300">
-                Gracias por contactarnos. Nos pondremos en contacto contigo lo
-                antes posible.
-              </p>
-            </div>
+              Enviar
+            </button>
           </form>
+
+          <script>
+            const contactForm = document.querySelector("#contact-form");
+            if (contactForm) {
+              contactForm.addEventListener("submit", async (event) => {
+                event.preventDefault(); // Evita el envío tradicional del formulario
+
+                const form = event.target as HTMLFormElement;
+                const formData = new FormData(form);
+                const data = {
+                  name: formData.get("name"),
+                  email: formData.get("email"),
+                  message: formData.get("message"),
+                };
+
+                try {
+                  const response = await fetch("/api/send-message", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data),
+                  });
+
+                  const result = await response.json();
+
+                  if (response.ok) {
+                    alert("Mensaje enviado con éxito.");
+                    form.reset(); // Limpiar el formulario después del envío
+                  } else {
+                    alert(`Error: ${result.error}`);
+                  }
+                } catch (error) {
+                  alert("Hubo un error al enviar el mensaje.");
+                }
+              });
+            }
+          </script>
         </div>
       </div>
     </div>
