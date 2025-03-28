@@ -31,11 +31,13 @@ export async function POST({ request }: { request: Request }) {
         });
     
         const mailOptions = {
-          from: email,
+          from: `"${name}" <${process.env.GMAIL_USER}>`, 
+          replyTo: email, 
           to: "betolguinv99@gmail.com",
-          subject: `Nuevo mensaje de ${name}`,
+          subject: `CONTACTO WEB IMPLAMAX`,
           text: `Nombre: ${name}\nCorreo: ${email}\nMensaje:\n${message}`,
         };
+        
     
         console.log("Enviando correo...");
         await transporter.sendMail(mailOptions);

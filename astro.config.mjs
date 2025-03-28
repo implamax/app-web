@@ -3,10 +3,18 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import alpinejs from '@astrojs/alpinejs';
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     tailwind(),
     alpinejs()
-  ]
+  ],
+
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  })
 });

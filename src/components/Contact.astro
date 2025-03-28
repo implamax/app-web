@@ -223,7 +223,7 @@
             const contactForm = document.querySelector("#contact-form");
             if (contactForm) {
               contactForm.addEventListener("submit", async (event) => {
-                event.preventDefault(); // Evita el envío tradicional del formulario
+                event.preventDefault();
 
                 const form = event.target as HTMLFormElement;
                 const formData = new FormData(form);
@@ -232,6 +232,14 @@
                   email: formData.get("email"),
                   message: formData.get("message"),
                 };
+
+                const submitButton = form.querySelector(
+                  "button[type='submit']"
+                );
+                if (submitButton) {
+                  (submitButton as HTMLButtonElement).disabled = true;
+                  submitButton.textContent = "Enviando...";
+                }
 
                 try {
                   const response = await fetch("/api/send-message", {
@@ -243,13 +251,20 @@
                   const result = await response.json();
 
                   if (response.ok) {
-                    alert("Mensaje enviado con éxito.");
-                    form.reset(); // Limpiar el formulario después del envío
+                    alert(
+                      "Mensaje enviado con éxito, te contáctaremos a la brevedad."
+                    );
+                    form.reset();
                   } else {
                     alert(`Error: ${result.error}`);
                   }
                 } catch (error) {
                   alert("Hubo un error al enviar el mensaje.");
+                } finally {
+                  if (submitButton) {
+                    (submitButton as HTMLButtonElement).disabled = false;
+                    submitButton.textContent = "Enviar";
+                  }
                 }
               });
             }

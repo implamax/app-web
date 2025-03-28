@@ -16,6 +16,7 @@
       <form
         class="max-w-xl mx-auto"
         x-data="{ email: '', submitted: false, error: '' }"
+        @submit.prevent="submitForm"
       >
         <div class="relative" x-show="!submitted">
           <div class="flex flex-col sm:flex-row gap-4">
@@ -36,22 +37,7 @@
               >
               </p>
             </div>
-            <button
-              type="submit"
-              class="btn-primary whitespace-nowrap"
-              x-on:click.prevent="
-                if (!email) {
-                  error = 'Please enter your email';
-                  return;
-                }
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                  error = 'Please enter a valid email';
-                  return;
-                }
-                error = '';
-                submitted = true;
-              "
-            >
+            <button type="submit" class="btn-primary whitespace-nowrap">
               Suscríbete Ahora
             </button>
           </div>
@@ -90,13 +76,51 @@
         <a
           href="#"
           class="text-primary-600 dark:text-primary-400 hover:underline"
-          >Política de Privacidad
-        </a> y <a
+          >Política de Privacidad</a
+        > y <a
           href="#"
           class="text-primary-600 dark:text-primary-400 hover:underline"
-          >Términos de servicio
-        </a>.
+          >Términos de servicio</a
+        >.
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  function submitForm(this: {
+    email: string;
+    error: string;
+    submitted: boolean;
+  }) {
+    const email = this.email;
+    if (!email) {
+      this.error = "Please enter your email";
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      this.error = "Please enter a valid email";
+      return;
+    }
+
+    this.error = "";
+    this.submitted = true;
+
+    fetch(process.env.GOOGLE_SHEET_SCRIPT_URL || "https://example.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ email }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result === "success") {
+          console.log("Formulario enviado correctamente");
+        } else {
+          this.error = "Hubo un error, inténtalo de nuevo más tarde.";
+        }
+      })
+      .catch(() => {
+        this.error = "Hubo un error, inténtalo de nuevo más tarde.";
+      });
+  }
+</script>
