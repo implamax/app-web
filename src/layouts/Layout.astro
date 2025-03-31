@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import "../styles/transitions.css";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   title: string;
@@ -10,13 +10,13 @@ export interface Props {
 
 const {
   title,
-  description = "Clínica dental especialzada en implantes dentales, ortodoncia y estética dental en Santiago, Chile.",
+  description = "Clínica dental especializada en implantes dentales, ortodoncia y estética dental en Santiago, Chile.",
 } = Astro.props;
 ---
 
 <!doctype html>
 <html
-  lang="en"
+  lang="es"
   x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }"
   x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
   :class="{ 'dark': darkMode }"
@@ -27,19 +27,50 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="clínica dental, dentista, implantes dentles, ortodoncia, estética dental, Santiago, Chile"
+    />
+    <meta name="author" content="Clínica Implamax" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/ruta-de-la-imagen.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://implamax.cl/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{title}" />
+    <meta name="twitter:description" content="{description}" />
+    <meta name="twitter:image" content="/ruta-de-la-imagen.jpg" />
+
+    <link rel="canonical" href="https://implamax.cl/" />
+
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      rel="preload"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <ViewTransitions />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <ClientRouter />
   </head>
   <body
     class="antialiased bg-white dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 transition-colors duration-300"
   >
     <div id="page-wrapper" class="page-transition-wrapper">
+      <h1 class="sr-only">
+        Clínica Dental Especializada en Implantes Dentales y Ortodoncia en
+        Santiago, Chile
+      </h1>
       <slot />
     </div>
     <script>
@@ -72,5 +103,30 @@ const {
       });
     </script>
     <script src="../scripts/transitions.js"></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Dentist",
+        "name": "Clínica Implamax",
+        "url": "https://implamax.cl/",
+        "logo": "https://implamax.cl/logo.png",
+        "description": "Clínica dental especializada en implantes dentales, ortodoncia y estética dental en Santiago, Chile.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Providencia 1881",
+          "addressLocality": "Santiago",
+          "addressRegion": "RM",
+          "postalCode": "75500520",
+          "addressCountry": "CL"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+56 9 2170 9433",
+          "contactType": "customer service"
+        },
+        "openingHours": ["Mo 14:00-20:30", "We 14:00-20:30"]
+      }
+    </script>
   </body>
 </html>
