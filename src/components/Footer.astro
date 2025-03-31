@@ -4,39 +4,21 @@ const currentYear = new Date().getFullYear();
 const footerLinks = [
   {
     title: "Inicio",
-    links: [
-      { text: "Inicio", url: "/" },
-      { text: "Centro Dental", url: "/features" },
-      { text: "Tratamientos Odontológicos", url: "/pricing" },
-      { text: "Contáctanos", url: "/contact" },
-    ],
+    links: [{ text: "Inicio", url: "/" }],
   },
   {
     title: "Servicios",
     links: [
-      { text: "Nuestros Servicios", url: "/features" },
-      { text: "Precios", url: "/pricing" },
-      { text: "Preguntas Frecuentes", url: "/faqs" },
-      { text: "Novedades", url: "/changelog" },
-      { text: "Tratamientos Especiales", url: "/integrations" },
+      { text: "Precios", url: "/planes" },
+      { text: "Preguntas Frecuentes", url: "/preguntas-frecuentes" },
     ],
   },
   {
     title: "Recursos",
     links: [
-      { text: "Blog", url: "/blog" },
-      { text: "Casos de Éxito", url: "/case-study" },
-    ],
-  },
-  {
-    title: "Nuestra Clínica",
-    links: [
-      { text: "Acerca de Nosotros", url: "/company" },
-      { text: "Trabaja con Nosotros", url: "/career" },
-      { text: "Contáctanos", url: "/contact" },
-      { text: "Opiniones de Pacientes", url: "/reviews" },
-      { text: "Política de Privacidad", url: "/privacy-policy" },
-      { text: "Términos y Condiciones", url: "/terms-conditions" },
+      { text: "Casos de Éxito", url: "/casos-de-exito" },
+      { text: "Sobre Nosotros", url: "/nosotros" },
+      { text: "Contáctanos", url: "/contactanos" },
     ],
   },
 ];
@@ -53,9 +35,8 @@ const footerLinks = [
           >
         </a>
         <p class="text-gray-400 mb-6 max-w-md">
-          Especializados en devolver sonrisas completas con implantes dentales
-          de última generación y atención personalizada para cada paciente que
-          busca mejorar su salud bucal.
+          Especializados en devolver la sonrisa a nuestros pacientes, con
+          tratamientos de implantes dentales y ortodoncia de alta calidad.
         </p>
         <div class="flex space-x-4">
           <a
@@ -153,19 +134,14 @@ const footerLinks = [
         </p>
         <div class="flex space-x-6">
           <a
-            href="/privacy-policy"
+            href="/"
             class="text-gray-400 hover:text-primary-400 text-sm transition-colors"
             >Política de Privacidad</a
           >
           <a
-            href="/terms-conditions"
+            href="/"
             class="text-gray-400 hover:text-primary-400 text-sm transition-colors"
             >Términos y Condiciones</a
-          >
-          <a
-            href="#"
-            class="text-gray-400 hover:text-primary-400 text-sm transition-colors"
-            >Política de Cookies</a
           >
         </div>
       </div>
