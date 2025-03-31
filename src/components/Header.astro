@@ -1,11 +1,11 @@
 <header
-  class="fixed w-full bg-white/90 dark:bg-secondary-950/90 backdrop-blur-sm z-50 py-4 transition-colors duration-300"
+  class="fixed w-full bg-white/90 backdrop-blur-sm z-50 py-4 transition-colors duration-300"
 >
   <div class="container-custom flex items-center justify-between">
-    <a href="/" class="flex items-center" aria-label="Go to homepage">
+    <a href="/" class="flex items-center" aria-label="Ir a la página de inicio">
       <img
-        :src="darkMode ? '/logo-blanco.png' : '/logo-azul.png'"
-        alt="Logo implamax"
+        src="/logo-azul.png"
+        alt="Logo clínica implamax"
         class="h-16 w-auto fill-current text-primary-500 dark:text-primary-400"
       />
     </a>
@@ -17,73 +17,36 @@
         >Inicio</a
       >
       <a
-        href="/contact"
+        href="/nosotros"
         class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors"
-        >Contáctanos</a
+        >Nosotros</a
       >
       <a
-        href="/pricing"
+        href="/planes"
         class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors"
         >Planes</a
       >
       <a
-        href="/case-study"
+        href="/casos-de-exito"
         class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors"
         >Casos de éxito</a
       >
       <a
-        href="/faqs"
+        href="/preguntas-frecuentes"
         class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors"
       >
         Preguntas</a
       >
       <a
-        href="/company"
+        href="/contactanos"
         class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors"
-        >Nosotros</a
+        >Contáctanos</a
       >
 
       <!-- All Pages Dropdown -->
     </nav>
 
     <div class="flex items-center space-x-4">
-      <button
-        x-on:click="darkMode = !darkMode"
-        class="p-2 rounded-full text-secondary-500 hover:text-secondary-700 dark:text-secondary-400 dark:hover:text-secondary-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
-        aria-label="Toggle dark mode"
-      >
-        <svg
-          x-show="!darkMode"
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-          ></path>
-        </svg>
-        <svg
-          x-show="darkMode"
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-          ></path>
-        </svg>
-      </button>
-
       <a
         href="https://wa.me/56921709433?text=Hola%2C%20me%20gustaría%20%20agendar%20una%20hora"
         target="_blank"
@@ -146,30 +109,31 @@
             >Inicio</a
           >
           <a
-            href="/contact"
+            href="/nosotros"
             class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
-            >Contáctanos</a
+            >Nosotros</a
           >
           <a
-            href="/pricing"
+            href="/planes"
             class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
             >Planes</a
           >
           <a
-            href="/case-study"
+            href="/casos-de-exito"
             class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
             >Casos de éxito</a
           >
+
           <a
-            href="/faqs"
+            href="/preguntas-frecuentes"
             class="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 font-medium transition-colors"
           >
             Preguntas</a
           >
           <a
-            href="/features"
+            href="/contactanos"
             class="block px-4 py-2 text-sm text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100 dark:hover:bg-secondary-800"
-            >Nosotros</a
+            >Contáctanos</a
           >
         </div>
       </div>
